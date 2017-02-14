@@ -51,7 +51,7 @@ public class Prompter{
           System.out.println("Your guess is to high");
           tries--;
           attempt++;
-          System.out.println(game.getRandoNumber);
+          System.out.println(game.randoNumber);
         } 
 
       if(guessedNumber<game.randoNumber){
