@@ -1,9 +1,10 @@
-
+import java.util.Random;
 
 public class Jar{
   
- public static String itemName;
- public static int maxNumber;
+ private String itemName;
+ private int maxNumber;
+ public int randoNumber;
 
 
 
@@ -24,6 +25,18 @@ public class Jar{
     return maxNumber;
   
   }
+  public int getRandoNumber(){
+    return randoNumber;
+    
+  }
+  public int fillRandoNumber(int maxNumber){
+    Random random = new Random();
+    randoNumber = random.nextInt(maxNumber) + 1;
+    return randoNumber;
+    
+  
+  }
+
 
   
 

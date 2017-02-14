@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Random;
+
 
 
 public class Prompter{
@@ -22,50 +22,58 @@ public class Prompter{
     itemName.toLowerCase();
     System.out.println("What is the maximum amount of " + itemName);
     String maxNumberString = scanner.nextLine();
-    int maxNumber = Integer.parseInt(maxNumberString);    
-    fillRandoNumber(maxNumber);    
+    int maxNumber = Integer.parseInt(maxNumberString);      
     Jar game = new Jar(itemName,maxNumber);
+    game.fillRandoNumber(maxNumber);
                   
     System.out.println("PLAYER");
     System.out.println("======"); 
-    System.out.println("How many " + itemName + " are in the jar? pick a number between 1 and " + maxNumberString + " you have " + tries + " to get it correct.");
+    System.out.println("How many " + itemName + " are in the jar? pick a number between 1 and " + maxNumberString + " you have " + tries + " tries to get it correct.");
  
     while (checkNumber == true && tries > 0){      
       String guessedNumberString = scanner.nextLine();
-      guessedNumber = Integer.parseInt(guessedNumberString);
      
-        if (guessedNumber == randoNumber){
+     
+        if (guessedNumber == game.randoNumber){
             checkNumber = false;
             System.out.println("LOOK YOU DID IT! You got it in " + attempt + " attempt(s). GRATZ PLAYA umm sorry PLAYER!");
             tries = 0;
             System.exit(0);
           
         }
-        if(tries == 0){
-          System.out.println("GAME OVER!");
-          continue;
-        }
-        else{
-          System.out.println("Wrong..try again?");
-          tries--;
-          attempt++;
+      if(guessedNumber>maxNumber){
+          System.out.println("Your guess must be less than maximum fill amount");
+        
         }
 
+        
+       if(guessedNumber>game.randoNumber){
+          System.out.println("Your guess is to high");
+          tries--;
+          attempt++;
+          System.out.println(game.getRandoNumber);
+        } 
+
+      if(guessedNumber<game.randoNumber){
+        System.out.println("Your guess is to low");
+         tries--;
+         attempt++;
+         System.out.println(game.randoNumber);
+
     }
+     if (tries == 0){
+          System.out.println("GAME OVER!");
+          System.exit(0);
+       
+     }
     
 
  
   }
-  private int fillRandoNumber(int maxNumber){
-    Random random = new Random();
-    randoNumber = random.nextInt(maxNumber) + 1;
-    return randoNumber;
-    
   
-  }
 
 
-
+}
 }
 
 
