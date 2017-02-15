@@ -3,7 +3,7 @@ import java.util.Random;
 public class Jar{
   
  private String itemName;
- private int maxNumber;
+ public int maxNumber;
  public int randoNumber;
 
 
@@ -25,14 +25,12 @@ public class Jar{
     return maxNumber;
   
   }
-  public int getRandoNumber(){
-    return randoNumber;
-    
-  }
-  public int fillRandoNumber(int maxNumber){
+
+
+  public void fillRandoNumber(int maxNumber){
     Random random = new Random();
-    randoNumber = random.nextInt(maxNumber) + 1;
-    return randoNumber;
+    this.randoNumber = random.nextInt(maxNumber) + 1;
+    
     
   
   }

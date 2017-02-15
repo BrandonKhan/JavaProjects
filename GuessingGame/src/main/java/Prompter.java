@@ -6,13 +6,14 @@ public class Prompter{
   
   
   private boolean checkNumber = true;
-  private Jar game;
-  private int tries = 7;
   private int guessedNumber;
-  private int randoNumber; 
-  private int attempt = 1;
+  private int tries = 7;
+  private int attempt = 0;
+  
   
   public Prompter(){
+    
+   
     
     System.out.println("ADMINISTRATOR");      
     System.out.println("=============");
@@ -30,8 +31,12 @@ public class Prompter{
     System.out.println("======"); 
     System.out.println("How many " + itemName + " are in the jar? pick a number between 1 and " + maxNumberString + " you have " + tries + " tries to get it correct.");
  
-    while (checkNumber == true && tries > 0){      
+    while (checkNumber == true && tries > 0){     
       String guessedNumberString = scanner.nextLine();
+      int guessedNumber = Integer.parseInt(guessedNumberString);
+      System.out.println(game.randoNumber);
+       tries--;
+       attempt++;
      
      
         if (guessedNumber == game.randoNumber){
@@ -41,35 +46,34 @@ public class Prompter{
             System.exit(0);
           
         }
-      if(guessedNumber>maxNumber){
-          System.out.println("Your guess must be less than maximum fill amount");
-        
+      if(guessedNumber>maxNumber || guessedNumber == 0){
+          System.out.println("Your guess must be less than maximum fill amount and not 0 smarty pants...");
+          tries++;
+          attempt--;
         }
 
         
        if(guessedNumber>game.randoNumber){
           System.out.println("Your guess is to high");
-          tries--;
-          attempt++;
-          System.out.println(game.randoNumber);
+         
+          
         } 
 
       if(guessedNumber<game.randoNumber){
         System.out.println("Your guess is to low");
-         tries--;
-         attempt++;
-         System.out.println(game.randoNumber);
+       
 
     }
+    
+    
+
+ 
+  }
      if (tries == 0){
           System.out.println("GAME OVER!");
           System.exit(0);
        
      }
-    
-
- 
-  }
   
 
 
