@@ -34,7 +34,7 @@ public class Prompter{
     while (checkNumber == true && tries > 0){     
       String guessedNumberString = scanner.nextLine();
       int guessedNumber = Integer.parseInt(guessedNumberString);
-      System.out.println(game.randoNumber);
+     
        tries--;
        attempt++;
      
